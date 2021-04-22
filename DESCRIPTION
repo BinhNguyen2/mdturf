@@ -1,0 +1,14 @@
+Package: mdturf
+Title: TURF weighted by MaxDiff probability
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Binh",
+           family = "Nguyen",
+           role = c("aut", "cre"),
+           email = "nguyen.binhthi@gmail.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: mdturf makes TURF analysis applying the method TURF weighted by MaxDiff probability.
+License: `use_mit_license()`
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1.9001
