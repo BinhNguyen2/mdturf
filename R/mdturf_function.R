@@ -111,7 +111,7 @@ ReachProb = function(exp_mean_cent,combi,choice_item,weight = NULL){
   else {
     P_2 = as.matrix(exp_mean_cent) %*% combi
     PR_2 = P_2/(P_2+(choice_item-1))
-    PR_3 <- PR_2*drop(weight)
+    PR_3 <- PR_2*drop(as.matrix(weight))
     PR_3_column.means <- apply(PR_3, 2, mean)
     PR_3_Final = rbind.data.frame(PR_2,PR_3_column.means,rank(PR_3_column.means))
     return(PR_3_Final)
