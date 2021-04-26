@@ -35,7 +35,7 @@ PreShare = function(df,choice_item,weight = NULL){
     row.sums <- apply(df_4, 1, sum)
     df_5 <- df_4/row.sums
     df_6 <- df_5*drop(as.matrix(weight))
-    df_6_Final = rbind.data.frame(df_5,colMeans(df_6),rank(colMeans(df_6)))
+    df_6_Final = rbind.data.frame(df_5,colSums(df_6)/colSums(weight),rank(colSums(df_6)/colSums(weight)))
     return(df_6_Final)
   } 
 }
@@ -63,7 +63,7 @@ ExpMeanCent = function(df){
 #' Generate all possible combinations
 #'
 #' Technically this returns the maxtrix of possible combinations provided the number of items and the combination size.
-#' The number of items and the combination size are inputted.
+#' The maxtrix of MaxDiff utilities which are mean-centred and exponentiated and the combination size are inputted.
 #'
 #' @inheritParams exp_mean_cent is the number of items and size is the portfolio size.
 #' @return a matrix of possible combinations.
@@ -112,7 +112,7 @@ ReachProb = function(exp_mean_cent,combi,choice_item,weight = NULL){
     P_2 = as.matrix(exp_mean_cent) %*% combi
     PR_2 = P_2/(P_2+(choice_item-1))
     PR_3 <- PR_2*drop(as.matrix(weight))
-    PR_3_column.means <- apply(PR_3, 2, mean)
+    PR_3_column.means <- apply(PR_3, 2, sum)/colSums(weight)
     PR_3_Final = rbind.data.frame(PR_2,PR_3_column.means,rank(PR_3_column.means))
     return(PR_3_Final)
   } 
